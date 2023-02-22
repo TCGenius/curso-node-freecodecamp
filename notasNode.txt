@@ -1,0 +1,49 @@
+Notas NodeJS
+
+Exportar:
+module.exports es un OBJETO. Entonces, se puede realizar de 2 formas:
+
+module.exports.saludar = saludar (Si tengo una función, por ejemplo, llamada "saludar", puedo exportarlo como el valor "saludar", para importarlo desde otro lado.
+
+module.exports = {
+  saludar: saludar,
+  saludarHolaMundo: saludarHolaMundo
+}
+(Esto exportando ya como un objeto con varias propiedades, no solo la propiedad "saludar". Esto es justamente lo que se importa desde el otro lado).
+
+Importar:
+const saludos = require('./saludos.js) (Acá se toma el archivo donde está ese módulo y se importa el objeto completo que se exportó).
+
+const {saludarHolaMundo} = require('./saludos.js) (Esto significa que solo voy a tomar la propiedad saludarHolaMundo. NOTAR que es el nombre de la propiedad lo que se importa, no del valor.)
+
+Módulos built-in:
+
+console (consola, básicamente).
+
+process (proceso): 
+	process.env muestra el ENTORNO donde se ejecuta el proceso
+	process.argv es un array que muestra argumentos del proceso. 0: node, 1: nombre-app. Se puede acceder a un valor con process.argv[x]
+	process.memoryUsage muestra parámetros de uso de memoria
+
+OS  (Operating System. Se tiene que importar con require):
+	os.type() muestra el sistema operativo.
+	os.homedir() muestra el directorio principal del OS.
+	os.uptime() muestra el uptime.
+	os.userInfo() muestra información del usuario.
+
+timers (temporizador).
+	setTimeout(funcion, retraso, argumento1, argumento2 //de la función); //Se ejecuta después de un tiempo determinado (Retraso).
+	setImmediate(funcion, argumento, argumento2). //Se ejecuta en la próxima iteración del ciclo de eventos (lo más pronto posible. DESPUÉS del código síncrono).
+	setInterval(funcion, intervalo, arg1, arg2) //Se ejecuta un número infinito de veces con un retraso específico de milisegundos.
+
+fs (file system). Todos los métodos son asíncronos por defecto. Se agrega Sync al final del nombre para hacerlo síncrono. Por convención, se importa con require:
+	fs.readFile(nomArchivo[, options (por ejemplo, codificación utf-8], callback(err, data)) //leer
+	fs.rename(nomArchivo, nombreNuevo, callback(err)) //renombrar
+	fs.appendFile(nomArchivo, contenido, callback(err)) //Sumar contenido
+	fs.writeFile(nomArchivo, contenidoNuevo, callback(err)) //Reemplazar contenido
+	fs.unlink(nomAchivo, callback(err)) //Eliminar
+
+Emitters: Objetos que emiten eventos nombrados y llaman a funciones específicas cuando ocurren.
+Son instancias de la clase EventEmitter.
+La instancia tiene un método .on para asociar una función al evento.
+La función que maneja eventos se llama "Event Handler" (o listener)
