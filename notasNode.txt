@@ -47,3 +47,16 @@ Emitters: Objetos que emiten eventos nombrados y llaman a funciones específicas
 Son instancias de la clase EventEmitter.
 La instancia tiene un método .on para asociar una función al evento.
 La función que maneja eventos se llama "Event Handler" (o listener)
+
+Routes:
+Una ruta es: Método + Path + Cómo manejarlo. O sea:
+"Si recibes una solicitud GET en /cursos, hacé esto..."
+
+CRUD:
+Create
+Read
+Update
+Delete
+
+REST: Representational State Transfer (Andá a saber. Hay que investigar.)
+
